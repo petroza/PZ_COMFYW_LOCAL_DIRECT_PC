@@ -1,0 +1,22 @@
+# Runtime data — vstupy, výsledky, fronta a logy zůstávají jen lokálně
+data/inputs/*
+data/outputs/*
+data/tmp/*
+data/logs/*
+data/jobs.json
+!data/inputs/.gitkeep
+!data/outputs/.gitkeep
+!data/tmp/.gitkeep
+!data/logs/.gitkeep
+
+# Python a systém
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.old
+*.zip

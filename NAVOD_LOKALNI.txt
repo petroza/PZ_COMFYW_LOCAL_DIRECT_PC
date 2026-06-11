@@ -1,0 +1,23 @@
+PZ COMFYW LOCAL DIRECT - SAFE RESTART + FTP UI/UX
+
+Spouštěj: START_ALL.cmd
+
+Co balíček dělá:
+1) bezpečně ukončí starý Comfy proces / API na portu 8000,
+2) spustí Comfy znovu jako lokální API backend na http://127.0.0.1:8000,
+3) spustí lokální web na http://127.0.0.1:8765,
+4) používá UI/UX z FTP verze: bento glass design, CZ/EN, překladač promptu, crop rámeček, 1 PICT / 2 PICT.
+
+Důležité cesty v config.json:
+- comfy_start.main_py: cesta k ComfyUI main.py, když se nenajde automaticky
+- comfy_start.python_exe: cesta k python.exe z Comfy venv, když se nenajde automaticky
+- comfy_base: http://127.0.0.1:8000
+
+Logy:
+- data/logs/comfy_safe_restart.log
+- data/logs/local_server.log
+
+Update v03:
+- odstraněn zelený informační box Lokální režim z formuláře,
+- zjednodušen blok Odeslání,
+- graficky doladěné karty jobů ve frontě.
