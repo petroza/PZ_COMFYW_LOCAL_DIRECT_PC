@@ -503,7 +503,7 @@ def join_prompt_parts_once(*parts: str) -> str:
     return ", ".join(out)
 
 def restore_ltx_official_image_hold(wf: dict) -> None:
-    fixed_ok = set_node_input(wf, "320:288", "strength", 1.0) and set_node_input(wf, "320:296", "strength", 0.7)
+    fixed_ok = set_node_input(wf, "320:288", "strength", 1.0) and set_node_input(wf, "320:296", "strength", 0.85)
     if fixed_ok:
         if _get_node(wf, "320:302") is not None:
             set_node_input(wf, "320:288", "bypass", ["320:302", 0]); set_node_input(wf, "320:296", "bypass", ["320:302", 0])
@@ -517,7 +517,7 @@ def restore_ltx_official_image_hold(wf: dict) -> None:
     if len(ltx_nodes) >= 2:
         ltx_nodes.sort(key=lambda x: x[0])
         ltx_nodes[0][1]["inputs"]["strength"] = 1.0
-        ltx_nodes[1][1]["inputs"]["strength"] = 0.7
+        ltx_nodes[1][1]["inputs"]["strength"] = 0.85
         for _, node in ltx_nodes[:2]:
             if node["inputs"].get("bypass") is True: node["inputs"]["bypass"] = False
 
@@ -528,7 +528,7 @@ def assert_ltx_frame_hold_protected(wf: dict, comfy_image_name: str) -> None:
         raise RuntimeError(f"LTX ochrana: vstupní obrázek není ve workflow. Comfy image={comfy_image_name}")
     s1 = get_node_input(wf, "320:288", "strength"); s2 = get_node_input(wf, "320:296", "strength")
     try:
-        if not (float(s1) == 1.0 and float(s2) == 0.7):
+        if not (float(s1) == 1.0 and abs(float(s2) - 0.85) < 0.001):
             raise ValueError()
     except Exception:
         raise RuntimeError(f"LTX ochrana: image-hold strength byl přepsán. 320:288={s1} 320:296={s2}")
