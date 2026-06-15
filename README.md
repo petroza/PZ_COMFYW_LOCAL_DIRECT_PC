@@ -1,5 +1,7 @@
 # PZ COMFYW LOCAL DIRECT — lokální verze na jedno PC
 
+![PZ ComfyW — lokální web UI](screenshot.png)
+
 Lokální varianta [ComfyW](https://github.com/petroza/COMFY_PC_FTP_WORKER) bez FTP, bez workeru a bez přihlášení. Všechno běží na jednom počítači vedle ComfyUI: Python server drží frontu jobů, renderuje přes ComfyUI API (LTX 2.3 image-to-video) a výsledky ukládá lokálně do `data/outputs`.
 
 ```
